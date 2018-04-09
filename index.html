@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf8">
+    <script>
+      mxBasePath = 'mxgraph/javascript/src';
+    </script>
+    <script src="mxgraph/javascript/src/js/mxClient.js">
+    </script>
+    <script>
+      function main(container)
+      {
+        if(!mxClient.isBrowserSupported()){
+          mxUtils.error('Navegador no soportado', 200, false);
+        }
+        else{
+          mxEvent.disableContextMenu(container);
+          var graph = new mxGraph(container);
+          new mxRubberband(graph);
+          var parent = graph.getDefaultParent();
+          graph.getModel().beginUpdate();
+          try{
+            for(var i = 0; i < 5; i++){
+              for(var j = 0; j < 5; j++){
+                var v1 = graph.insertVertex(parent, null, 'Code', 20+j*220, 20+i*200, 80, 30);
+                v1.setConnectable(false);
+                var v2 = graph.insertVertex(parent, null, 'Deco', 200+j*220, 150+i*200, 80, 30);
+                var e1 = graph.insertEdge(parent, null, '', v1, v2);
+              }
+            }
+          }
+          finally{
+            graph.getModel().endUpdate();
+          }
+        }
+      }
+    </script>
+  </head>
+  <body onload="main(document.getElementById('graphContainer'))">
+    <div id="graphContainer" style="position:relative;overflow:both;widht:5000px;height:5000px;cursor:default">
+    </div>
+  </body>
+</html>
