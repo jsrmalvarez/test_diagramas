@@ -54,7 +54,7 @@
             
             for(var i = 0; i < 3; i++){
               for(var j = 0; j < 3; j++){
-                var v1 = graph.insertVertex(parent, null, getName('Code'), 20+j*240, 40+i*200, 130, 45);
+                var v1 = graph.insertVertex(parent, null, getName('Code'), 20+j*240, 50+i*200, 130, 45);
                 v1.setConnectable(false);
                 codecs.push(v1);
                 var v2 = graph.insertVertex(parent, null, getName('Deco'), 200+j*240, 170+i*200, 130, 45);
@@ -63,6 +63,17 @@
             }
                         
             graph.insertEdge(parent, null, '', codecs[0], decos[0]);
+            graph.insertEdge(parent, null, '', codecs[1], decos[1]);
+            graph.insertEdge(parent, null, '', codecs[1], decos[2]);
+            
+            graph.insertEdge(parent, null, '', codecs[3], decos[3]);
+            graph.insertEdge(parent, null, '', codecs[3], decos[4]);
+            graph.insertEdge(parent, null, '', codecs[5], decos[5]);
+
+            graph.insertEdge(parent, null, '', codecs[6], decos[6]);
+            graph.insertEdge(parent, null, '', codecs[7], decos[7]);
+            graph.insertEdge(parent, null, '', codecs[7], decos[8]);
+            
           }
           finally{
             graph.getModel().endUpdate();
